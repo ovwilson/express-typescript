@@ -10,9 +10,7 @@
     "watch-ts": "tsc -w",
     "test": "npm run build && jest --forceExit",
     "test-watch": "npm run build && jest --watchAll --forceExit",
-    "debug": "npm run build && npm run watch-debug",
-    "serve": "concurrently \"npm run watch-ts\" \"nodemon dist/server\"",
-    "serve-debug": "nodemon --inspect dist/server.js"
+    "serve": "concurrently \"npm run watch-ts\" \"nodemon dist/server\""
   },
   "jest": {
     "globals": {
