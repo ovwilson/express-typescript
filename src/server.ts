@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 
 app.route('/').get(index);
+
 app.listen(PORT, () => console.log(`Express Server Running on port ${PORT}`));
 
 module.exports = app;
