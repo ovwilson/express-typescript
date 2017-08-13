@@ -21,6 +21,18 @@
             ],
             "preLaunchTask": "npm: build",
             "protocol": "inspector"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "npm: test-build",
+            "name": "Run Mocha",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "${workspaceRoot}/test/*.js"
+            ],
+            
+            "cwd": "${workspaceRoot}"
         }
     ]
 }
