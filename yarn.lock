@@ -70,16 +70,23 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
-"@types/mongodb@*", "@types/mongodb@^2.2.9":
+"@types/mongodb@*":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-2.2.11.tgz#595cd869afa1c4cf6ee8935eb25a0783ab46e6aa"
+  dependencies:
+    "@types/bson" "*"
+    "@types/node" "*"
+
+"@types/mongodb@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-2.2.9.tgz#0dc823148103b7c943b16209f1899e33acd5faf6"
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^4.7.19":
-  version "4.7.19"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.19.tgz#140bb59454f8c70dd96cfb390ce70ddd648b514d"
+"@types/mongoose@^4.7.23":
+  version "4.7.23"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.23.tgz#ce665da40a0e20384c2d892622dbfbdd5fc2bdde"
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
@@ -1695,13 +1702,6 @@ mocha@^3.5.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
-mongodb-core@2.1.14:
-  version "2.1.14"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.14.tgz#13cba2764226b5be3d18992af0c963ce5ea0f0fd"
-  dependencies:
-    bson "~1.0.4"
-    require_optional "~1.0.0"
-
 mongodb-core@2.1.15:
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.15.tgz#841f53b87ffff4c7458189c35c8ae827e1169764"
@@ -1709,15 +1709,7 @@ mongodb-core@2.1.15:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@2.2.30:
-  version "2.2.30"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.30.tgz#8ccd801f676c8172040c2f2b47e9602a0d5634ab"
-  dependencies:
-    es6-promise "3.2.1"
-    mongodb-core "2.1.14"
-    readable-stream "2.2.7"
-
-"mongodb@>= 1.2.0 <3.0.0":
+mongodb@2.2.31, "mongodb@>= 1.2.0 <3.0.0":
   version "2.2.31"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.31.tgz#1940445c661e19217bb3bf8245d9854aaef548db"
   dependencies:
@@ -1725,15 +1717,15 @@ mongodb@2.2.30:
     mongodb-core "2.1.15"
     readable-stream "2.2.7"
 
-mongoose@^4.11.6:
-  version "4.11.6"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.6.tgz#d0ebdd5f5f34fca9b0f1b86e13cf7e532e939a09"
+mongoose@^4.11.12:
+  version "4.11.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.12.tgz#48ebd5cad051f6ddfd46648b86a19c7fd30e36db"
   dependencies:
     async "2.1.4"
     bson "~1.0.4"
     hooks-fixed "2.0.0"
     kareem "1.5.0"
-    mongodb "2.2.30"
+    mongodb "2.2.31"
     mpath "0.3.0"
     mpromise "0.5.5"
     mquery "2.3.1"

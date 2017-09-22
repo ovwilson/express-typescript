@@ -13,6 +13,7 @@
     "serve": "concurrently \"npm run watch-ts\" \"nodemon dist/server\""
   },
   "dependencies": {
+    "@types/mongoose": "^4.7.23",
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
     "chai": "^4.1.1",
@@ -23,7 +24,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.15.5",
     "mocha": "^3.5.0",
-    "mongoose": "^4.11.6",
+    "mongoose": "^4.11.12",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.3",
     "request": "^2.81.0"
@@ -38,7 +39,6 @@
     "@types/express-session": "^1.15.2",
     "@types/mocha": "^2.2.41",
     "@types/mongodb": "^2.2.9",
-    "@types/mongoose": "^4.7.19",
     "@types/morgan": "^1.7.32",
     "@types/node": "^8.0.20",
     "@types/request": "^2.0.0",
