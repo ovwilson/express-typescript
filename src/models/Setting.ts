@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-export const schemaName = 'Setting';
+const schemaName = 'Setting';
 
 const schema: Schema = new Schema({
     id: String,
@@ -10,8 +10,9 @@ const schema: Schema = new Schema({
     updatedAt: Date
 });
 
-schema.methods.search = () => {
-    this.find()
+schema.methods.seed = (record: any) => {
+
+    // this.save((err,))
 };
 
 export default model(schemaName, schema);

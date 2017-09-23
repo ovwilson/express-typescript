@@ -5,6 +5,7 @@ import * as express from 'express';
 import * as session from 'express-session';
 import { indexRouter } from './routes/Index';
 import { settingsRouter } from './routes/Settings';
+import { DB } from './helpers/db';
 
 class Server {
     public app: express.Application;
@@ -17,6 +18,7 @@ class Server {
     }
 
     public config() {
+        new DB().connect();
         this.app.listen(this.PORT, () => console.log(`Express Server Running on port ${this.PORT}`));
     }
 
