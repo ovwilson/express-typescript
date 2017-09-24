@@ -1,7 +1,7 @@
-var dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
-var shell = require('shelljs');
+const shell = require('shelljs');
 
 const DB_PATH = process.env.DB_PATH;
 

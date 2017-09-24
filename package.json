@@ -11,8 +11,7 @@
     "test-build": "tsc test/*.ts --sourceMap",
     "test": "mocha -r ts-node/register test/*.ts --watch --watch-extensions ts",
     "serve": "concurrently \"npm run watch-ts\" \"nodemon dist/server\"",
-    "mongod" : "node scripts/mongod",
-    "mongoimport" : "node scripts/mongoimport"
+    "mongod": "node scripts/mongod"
   },
   "dependencies": {
     "@types/mongoose": "^4.7.23",
@@ -25,6 +24,7 @@
     "express": "^4.15.4",
     "express-flash": "^0.0.2",
     "express-session": "^1.15.5",
+    "faker": "^4.1.0",
     "mocha": "^3.5.0",
     "mongoose": "^4.11.12",
     "morgan": "^1.8.2",

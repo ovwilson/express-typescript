@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 
+const faker = require('faker');
 const schemaName = 'Setting';
 
 const schema: Schema = new Schema({
@@ -10,8 +11,14 @@ const schema: Schema = new Schema({
     updatedAt: Date
 });
 
-schema.methods.seed = (record: any) => {
+schema.statics.seed = () => {
+    //for (let i = 0; i < quantity; i++) {
 
+    //             }
+    const setting = new this();
+    setting.title = faker.company.companyName();
+    setting.description = faker.lorem.paragraph();
+    this.create(setting, (err: any, data: any) => err ? '' : '');
     // this.save((err,))
 };
 
