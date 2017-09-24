@@ -36,7 +36,8 @@ class Server {
             .get(settingsRouter.getSettingById)
             .delete(settingsRouter.deleteById);
 
-        this.app.route('/settings-create/:quantity').get(settingsRouter.createSettings);
+        this.app.route('/settings-create/:quantity')
+            .post(settingsRouter.createSettings);
     }
 }
 

@@ -18,17 +18,18 @@ class SettingsRouter {
     }
 
     createSettings(request: Request, response: Response) {
-
+        Model.seed(request.params.quantity, (err: any, data: any) =>
+            err ? response.status(500).send(err) : response.send(`<pre>${JSON.stringify(data, undefined, 2)}</pre>`));
     }
 
     deleteById(request: Request, response: Response) {
         Model.remove({ id: request.params.id }, (err) =>
-            err ? response.status(500).send(err) : response.json({ status: 'Records Removed.' }));
+            err ? response.status(500).send(err) : response.json({ id: request.params.id, status: 'Record Removed.' }));
     }
 
     deleteAll(request: Request, response: Response) {
         Model.remove({}, (err) =>
-            err ? response.status(500).send(err) : response.json({ status: 'Records Removed.' }));
+            err ? response.status(500).send(err) : response.json({ status: 'All Records Removed.' }));
     }
 }
 

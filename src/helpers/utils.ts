@@ -1,8 +1,13 @@
 const faker = require('faker');
 
-export class Utils {
-    constructor() { }
+interface Table {
+    name: string;
+    attributes(): any;
 }
+
+export const tables: Table[] = [
+    { name: 'Setting', attributes: () => Object.assign({}, { title: faker.company.companyName(), description: faker.lorem.paragraph() }) }
+];
 
 export class NumberGenerator {
     startNum: number;

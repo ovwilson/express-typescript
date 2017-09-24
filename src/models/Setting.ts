@@ -1,7 +1,19 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Model, Document } from 'mongoose';
+import { tables } from './../helpers/utils';
 
-const faker = require('faker');
 const schemaName = 'Setting';
+
+interface IDocument extends Document {
+    id: string;
+    title: string;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+interface IModel extends Model<IDocument> {
+    seed(quantity: number, cb: any): any;
+}
 
 const schema: Schema = new Schema({
     id: String,
@@ -11,15 +23,14 @@ const schema: Schema = new Schema({
     updatedAt: Date
 });
 
-schema.statics.seed = () => {
-    //for (let i = 0; i < quantity; i++) {
-
-    //             }
-    const setting = new this();
-    setting.title = faker.company.companyName();
-    setting.description = faker.lorem.paragraph();
-    this.create(setting, (err: any, data: any) => err ? '' : '');
-    // this.save((err,))
+schema.statics.seed = function (quantity: number, cb: any) { // this function cannot use lamba or arrow function ( => )
+    const attributes = tables.filter(table => table.name === schemaName)[0].attributes;
+    const settings = [];
+    for (let i = 0; i < quantity; i++) {
+        const setting = Object.assign({}, attributes());
+        settings.push(setting);
+    }
+    return this.collection.insert(settings, cb);
 };
 
-export default model(schemaName, schema);
+export default model<IDocument, IModel>(schemaName, schema);
