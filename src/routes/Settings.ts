@@ -5,26 +5,33 @@ class SettingsRouter {
 
     constructor() { }
 
-    getSettings(request: Request, response: Response, next: NextFunction) {
+    get(request: Request, response: Response, next: NextFunction) {
         Model.find((err, data) => err ? response.send(err) : response.json(data));
     }
 
-    getSettingById(request: Request, response: Response, next: NextFunction) {
+    getById(request: Request, response: Response, next: NextFunction) {
         Model.find({ id: request.params.id }, (err, data) => err ? response.status(500).send(err) : response.json(data));
     }
 
-    createSetting(request: Request, response: Response) {
+    create(request: Request, response: Response) {
         Model.create(request.body, (err, data) => err ? response.status(500).send(err) : response.json(data));
     }
 
-    createSettings(request: Request, response: Response) {
+    createSeed(request: Request, response: Response) {
         Model.seed(request.params.quantity, (err: any, data: any) =>
             err ? response.status(500).send(err) : response.send(`<pre>${JSON.stringify(data, undefined, 2)}</pre>`));
     }
 
+    updateById(request: Request, response: Response) {
+        const query = { id: request.params.id },
+            update = { title: request.body.title, description: request.body.description };
+        Model.findOneAndUpdate(query, update, (err: any, data: any) =>
+            err ? response.status(500).send(err) : response.json(data));
+    }
+
     deleteById(request: Request, response: Response) {
-        Model.remove({ id: request.params.id }, (err) =>
-            err ? response.status(500).send(err) : response.json({ id: request.params.id, status: 'Record Removed.' }));
+        Model.findOneAndRemove({ id: request.params.id }, (err: any, data: any) =>
+            err ? response.status(500).send(err) : response.json(data));
     }
 
     deleteAll(request: Request, response: Response) {

@@ -6,6 +6,7 @@ import * as session from 'express-session';
 import * as bodyParser from 'body-parser';
 import { indexRouter } from './routes/Index';
 import { settingsRouter } from './routes/Settings';
+import { counterRouter } from './routes/Counter';
 import { DB } from './helpers/db';
 
 class Server {
@@ -20,6 +21,7 @@ class Server {
 
     public config() {
         new DB().connect();
+        this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.listen(this.PORT, () => console.log(`Express Server Running on port ${this.PORT}`));
     }
@@ -28,16 +30,26 @@ class Server {
         this.app.route('/').get(indexRouter);
 
         this.app.route('/settings')
-            .get(settingsRouter.getSettings)
-            .post(settingsRouter.createSetting)
+            .get(settingsRouter.get)
+            .post(settingsRouter.create)
             .delete(settingsRouter.deleteAll);
 
         this.app.route('/settings/:id')
-            .get(settingsRouter.getSettingById)
+            .get(settingsRouter.getById)
+            .patch(settingsRouter.updateById)
             .delete(settingsRouter.deleteById);
 
         this.app.route('/settings-create/:quantity')
-            .post(settingsRouter.createSettings);
+            .post(settingsRouter.createSeed);
+
+        this.app.route('/counters')
+            .get(counterRouter.getCounters);
+
+        this.app.route('/counter-create/:name')
+            .post(counterRouter.createCounter);
+
+        this.app.route('/counter/:name')
+            .post(counterRouter.updateCounter);
     }
 }
 

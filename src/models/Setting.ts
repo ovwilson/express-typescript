@@ -1,5 +1,6 @@
 import { Schema, model, Model, Document } from 'mongoose';
 import { tables } from './../helpers/utils';
+import Counter from './Counter';
 
 const schemaName = 'Setting';
 
@@ -16,11 +17,19 @@ interface IModel extends Model<IDocument> {
 }
 
 const schema: Schema = new Schema({
-    id: String,
+    id: Number,
     title: String,
     description: String,
-    createdAt: Date,
-    updatedAt: Date
+    createdAt: { type: Date, default: () => Date.now() },
+    updatedAt: { type: Date, default: () => Date.now() }
+});
+
+schema.pre('save', function (next) {
+    const doc = this;
+    Counter.getNextSequence('Setting', (err: any, data: any) => {
+        doc.id = data.seq;
+        next();
+    });
 });
 
 schema.statics.seed = function (quantity: number, cb: any) { // this function cannot use lamba or arrow function ( => )
